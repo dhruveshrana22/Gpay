@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
 import {BaseColors} from '../../config/theme';
 import {images} from '../../config/images';
 import Animated, {ZoomIn} from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 const zoomIn = ZoomIn.duration(1000).delay(100);
 const SplashScreen = () => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    // Navigate to Home screen after 5 seconds
+    const timer = setTimeout(() => {
+      navigation.replace('Home');
+    }, 3000);
+
+    // Cleanup the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, [navigation]);
   return (
     <View
       style={{

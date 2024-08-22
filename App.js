@@ -13,6 +13,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SplashScreen from './app/screen/SplashScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import Home from './app/screen/Home';
 const Stack = createStackNavigator();
 
 const Auth = () => {
@@ -32,10 +33,15 @@ const App = () => {
         <StatusBar
           barStyle={'light-content'}/>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="SplashScreen">
+            <Stack.Navigator initialRouteName="Login">
               <Stack.Screen
                 name="SplashScreen"
                 component={SplashScreen}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Home"
+                component={Home}
                 options={{headerShown: false}}
               />
             </Stack.Navigator>
