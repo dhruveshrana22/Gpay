@@ -4,13 +4,21 @@ import {BaseColors} from '../../config/theme';
 import {images} from '../../config/images';
 import Animated, {ZoomIn} from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 const zoomIn = ZoomIn.duration(1000).delay(100);
 const SplashScreen = () => {
+  const {userData} = useSelector(state => state.auth);
+  console.log("userData", userData);
+
   const navigation = useNavigation();
   useEffect(() => {
     // Navigate to Home screen after 5 seconds
     const timer = setTimeout(() => {
-      navigation.replace('Home');
+      if(userData?.actionToken){
+        navigation.replace('Home');
+      }else{
+        navigation.replace("Auth");
+      }
     }, 3000);
 
     // Cleanup the timer when the component unmounts

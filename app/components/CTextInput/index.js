@@ -238,13 +238,13 @@ function CInput(props, ref) {
                   <Ionicons
                     name="eye-outline"
                     size={22}
-                    style={{ color: BaseColors.text }}
+                    style={{ color: BaseColors.whiteSmoke }}
                   />
                 ) : (
                   <Ionicons
                     name="eye-off-outline"
                     size={22}
-                    style={{ color: BaseColors.text }}
+                    style={{ color: BaseColors.whiteSmoke }}
                   />
                 )}
               </TouchableOpacity>
